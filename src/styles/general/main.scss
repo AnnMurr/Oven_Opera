@@ -1,0 +1,43 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.main {
+    height: 100vh;
+}
+
+.background-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+
+    &_dough {
+        background-image: url('../../assets/images/dough.jpg') !important;
+
+        &::before {
+            background-color: rgba(57, 51, 51, 0.793);
+        }
+    }
+
+    &_pizza {
+        background-image: url('../../assets/images/peopleWithPizza.jpg') !important;
+
+        &::before {
+            background-color: rgba(45, 23, 23, 0.793);
+        }
+    }
+
+    &::before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+}
