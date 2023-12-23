@@ -16,6 +16,7 @@
         a {
             color: #fff;
             text-decoration: underline;
+            font-weight: 600;
         }
     }
 
@@ -26,10 +27,19 @@
     &__menu {
         display: flex;
 
-        li a {
-            color: #fff;
+        li {
             padding: 0 30px;
-            font-size: 20px;
+
+            a {
+                color: #fff;
+                font-size: 20px;
+                transition: all 0.5s ease;
+                border-bottom: 1px solid transparent;
+
+                &:hover {
+                    border-bottom: 1px solid #fff;
+                }
+            }
         }
     }
 
