@@ -44,8 +44,16 @@
         justify-content: center;
         margin: 0 30px;
 
-        a img {
-            width: 25px;
+        a {
+            transition: all 1s ease;
+
+            img {
+                width: 25px;
+            }
+
+            &:hover {
+                transform: rotateY(380deg);
+            }
         }
     }
 }

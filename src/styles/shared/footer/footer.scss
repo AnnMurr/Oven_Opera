@@ -12,6 +12,11 @@
         text-transform: uppercase;
         color: #fff;
         font-size: 12px;
+
+        a {
+            color: #fff;
+            text-decoration: underline;
+        }
     }
 
     &__nav {
