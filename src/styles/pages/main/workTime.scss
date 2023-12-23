@@ -1,0 +1,20 @@
+.workTime {
+    &__wrapper {
+        padding: 90px 0;
+        text-align: center;
+    }
+
+    &__title {
+        padding-bottom: 40px;
+
+        h3 {
+            font-size: 30px;
+            color: #ca1111;
+        }
+    }
+
+    &__days {
+        display: flex;
+        justify-content: space-between;
+    }
+}
