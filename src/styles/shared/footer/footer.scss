@@ -1,0 +1,37 @@
+.footer {
+    background-color: #ca1210;
+
+    &__wrapper {
+        padding: 40px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__contact {
+        text-transform: uppercase;
+        color: #fff;
+        font-size: 14px;
+    }
+
+    &__nav {
+        padding: 40px 0;
+    }
+
+    &__menu {
+        display: flex;
+
+        li {
+            color: #fff;
+            padding: 0 30px;
+            font-size: 20px;
+        }
+    }
+
+    &__copyright {
+        span {
+            font-size: 13px;
+            color: #fff;
+        }
+    }
+}
