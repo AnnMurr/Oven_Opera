@@ -46,6 +46,12 @@ body {
         }
     }
 
+    &_dark {
+        &::before {
+            background-color: rgba(0, 0, 0, 0.881);
+        }
+    }
+
     &::before {
         content: "";
         width: 100%;

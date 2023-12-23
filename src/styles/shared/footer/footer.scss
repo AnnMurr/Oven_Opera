@@ -11,7 +11,7 @@
     &__contact {
         text-transform: uppercase;
         color: #fff;
-        font-size: 14px;
+        font-size: 12px;
     }
 
     &__nav {
@@ -21,7 +21,7 @@
     &__menu {
         display: flex;
 
-        li {
+        li a {
             color: #fff;
             padding: 0 30px;
             font-size: 20px;
@@ -31,7 +31,8 @@
     &__copyright {
         span {
             font-size: 13px;
-            color: #fff;
+            color: #ffffffe2;
+            font-weight: 300;
         }
     }
 }
