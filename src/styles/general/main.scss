@@ -66,6 +66,10 @@ body {
     color: #fff;
     background-color: #9f2e2d;
 
+    &_big {
+        width: 100%;
+    }
+
     &-link {
         a {
             background-color: #ca1210;
