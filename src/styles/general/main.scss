@@ -59,3 +59,14 @@ body {
         position: absolute;
     }
 }
+
+.btn-link {
+    a {
+        background-color: #ca1210;
+        padding: 10px 30px;
+        display: inline-block;
+        color: #fff;
+        margin-top: 30px;
+        text-transform: uppercase;
+    }
+}

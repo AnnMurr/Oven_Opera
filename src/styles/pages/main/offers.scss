@@ -1,0 +1,48 @@
+.offers {
+    &__wrapper {
+        padding: 90px 0;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    &__content {
+        max-width: 40%;
+        text-align: center;
+    }
+
+    &__title {
+        padding-bottom: 40px;
+
+        h3 {
+            font-family: 'Instrument Serif';
+            letter-spacing: 10px;
+            font-size: 40px;
+            color: #ca1111;
+        }
+    }
+
+    &__text {
+        padding: 10px 0 5px 0;
+
+        h5 {
+            font-size: 18px;
+            opacity: 0.8;
+        }
+    }
+
+    &__subtext {
+        span {
+
+        }
+    }
+
+    &__image {
+        max-width: 350px;
+
+        img {
+            border-radius: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
