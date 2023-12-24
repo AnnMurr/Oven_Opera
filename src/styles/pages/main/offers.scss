@@ -2,12 +2,14 @@
     &__wrapper {
         padding: 90px 0;
         display: flex;
+        align-items: center;
         justify-content: space-around;
     }
 
     &__content {
         max-width: 40%;
         text-align: center;
+        
     }
 
     &__title {
@@ -32,12 +34,13 @@
 
     &__subtext {
         span {
-
+            font-weight: 300;
+            font-size: 14px;
         }
     }
 
     &__image {
-        max-width: 350px;
+        max-width: 320px;
 
         img {
             border-radius: 100%;
