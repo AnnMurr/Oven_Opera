@@ -5,5 +5,5 @@ export async function getMenu() {
     .then(data => {
         return data
     })
-    .catch(err => err)
+    .catch(error => { throw error })
 }

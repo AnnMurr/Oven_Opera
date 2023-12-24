@@ -4,14 +4,8 @@ import { getFormatCurrency } from "../../core/utils/formatCurrency.js";
 const container = document.querySelector(".menu__wrapper");
 
 async function getCardsData() {
-  try {
     const data = await getMenu();
-    console.log(data);
     data.forEach((obj) => container.append(createCard(obj)));
-  } catch (e) {
-    console.error("error", e);
-    throw e;
-  }
 }
 
 function createCard(data) {
@@ -48,11 +42,12 @@ function createCardWrapper(data) {
 function createCardImage(url) {
   const container = document.createElement("div");
   container.classList.add("card__image");
-  const img = document.createElement("img");
-  img.src = url;
-  img.alt = url;
+  const image = document.createElement("img");
+  image.loading = 'eager'
+  image.src = url;
+  image.alt = url;
 
-  container.append(img);
+  container.append(image);
   return container;
 }
 
@@ -81,6 +76,7 @@ function createCardSize() {
   const container = document.createElement("select");
   container.classList.add("card__size");
   container.setAttribute("type", "text");
+  container.addEventListener('change', () => handleCurrencyChange(container));
 
   options.forEach((el) => {
     const option = document.createElement("option");
@@ -89,6 +85,11 @@ function createCardSize() {
   });
 
   return container;
+}
+
+function handleCurrencyChange(currencySelect) {
+    const selectedCurrency = currencySelect.value;
+      console.log(`Selected currency: ${selectedCurrency}`);
 }
 
 function createCardPrice(price) {
