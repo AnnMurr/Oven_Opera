@@ -1,15 +1,7 @@
-import { getMenu } from "../../api/getApi.js";
 import { getFormatCurrency } from "../../core/utils/formatCurrency.js";
+import { handleCurrencyChange } from "./card.js";
 
-const container = document.querySelector(".menu__cards");
-
-async function getCardsData() {
-  const data = await getMenu();
-  localStorage.setItem("cards", JSON.stringify(data[0].pizzas));
-  data[0].pizzas.forEach((obj) => container.append(createCard(obj)));
-}
-
-function createCard(data) {
+export function createCard(data) {
   const card = document.createElement("div");
   card.classList.add("card");
   card.id = data.uid;
@@ -93,19 +85,6 @@ function createCardSize() {
   return container;
 }
 
-function handleCurrencyChange(e, currencySelect) {
-  const selectedCurrency = currencySelect.value;
-  const id = e.target.parentNode.parentNode.parentNode.id;
-  const cardsFromStore = JSON.parse(localStorage.getItem("cards"));
-
-  cardsFromStore.forEach((elem) => {
-    if (+elem.uid === +id) {
-      const price = document.getElementById(id).querySelector(".card__price-value");
-      price.textContent = getFormatCurrency(elem.price[selectedCurrency]);
-    }
-  });
-}
-
 function createCardPrice(price) {
   const container = document.createElement("div");
   container.classList.add("card__price");
@@ -128,5 +107,3 @@ function createCardButton() {
   container.append(btn);
   return container;
 }
-
-document.addEventListener("DOMContentLoaded", getCardsData());

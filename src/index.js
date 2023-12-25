@@ -1,2 +1,2 @@
-import { cards } from "./components/card/export-cards";
-import { createCards } from "./components/card/export-cards";
+import { cards } from "./components/menu/export-cards";
+import { createCards } from "./components/menu/export-cards";
