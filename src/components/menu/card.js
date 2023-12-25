@@ -3,11 +3,30 @@ import { createCard } from "./createCard.js";
 import { getFormatCurrency } from "../../core/utils/formatCurrency.js";
 
 const container = document.querySelector(".menu__cards");
+const categoriesBtns = document.querySelectorAll(".menu__item-btn");
+categoriesBtns.forEach((btn) => btn.addEventListener("click", getCategory));
 
-async function getCardsData() {
-  const data = await getMenuData();
-  localStorage.setItem("cards", JSON.stringify(data[0].pizzas));
-  data[0].pizzas.forEach((obj) => container.append(createCard(obj)));
+function getCategory(event) {
+  getCardsData(event.target.innerText);
+}
+
+async function getCardsData(categoryName) {
+  const dataFromApi = await getMenuData();
+  const firstObject = dataFromApi[0];
+  const category = firstObject && categoryName ? categoryName : "pizzas";
+  const data = dataFromApi[0][category];
+  container.innerHTML = null;
+  getNavLink(category);
+  localStorage.setItem("cards", JSON.stringify(data));
+  data.forEach((obj) => container.append(createCard(obj)));
+}
+
+function getNavLink(category) {
+  categoriesBtns.forEach((btn) =>
+    btn.innerText === category
+      ? btn.classList.add("menu__item-btn_active")
+      : btn.classList.remove("menu__item-btn_active")
+  );
 }
 
 export function handleCurrencyChange(e, currencySelect) {

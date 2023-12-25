@@ -22,14 +22,10 @@ function createCardWrapper(data) {
   const wrapper = document.createElement("div");
   wrapper.classList.add("card__wrapper");
 
-  wrapper.append(
-    createCardImage(data.image),
-    createCardTitle(data.title),
-    createCardIngredients(data.ingredients),
-    createCardSize(),
-    createCardPrice(data.price.medium),
-    createCardButton()
-  );
+  wrapper.append(createCardImage(data.image), createCardTitle(data.title));
+  data.ingredients && wrapper.append(createCardIngredients(data.ingredients));
+  data.price.medium && wrapper.append(createCardSize());
+  wrapper.append(createCardPrice(data), createCardButton());
   return wrapper;
 }
 
@@ -85,11 +81,13 @@ function createCardSize() {
   return container;
 }
 
-function createCardPrice(price) {
+function createCardPrice(data) {
   const container = document.createElement("div");
   container.classList.add("card__price");
   const text = document.createElement("span");
-  text.textContent = getFormatCurrency(price);
+  text.textContent = data.price.medium
+    ? getFormatCurrency(data.price.medium)
+    : getFormatCurrency(data.price);
   text.classList.add("card__price-value");
 
   container.append(text);

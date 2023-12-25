@@ -28,12 +28,22 @@
             font-size: 18px;
             color: #fff;
             font-weight: 600;
+            padding: 5px;
+
+            &_active {
+                border: 1px solid #fff9;
+                border-radius: 8px;
+            }
         }
     }
 }
 
 .card {
     flex: 0 1 calc(25% - 20px);
+
+    &__container {
+        height: 100%;
+    }
 
     &__wrapper {
         padding: 20px;
