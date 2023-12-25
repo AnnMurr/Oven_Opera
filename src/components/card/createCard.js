@@ -1,16 +1,18 @@
 import { getMenu } from "../../api/getApi.js";
 import { getFormatCurrency } from "../../core/utils/formatCurrency.js";
 
-const container = document.querySelector(".menu__wrapper");
+const container = document.querySelector(".menu__cards");
 
 async function getCardsData() {
-    const data = await getMenu();
-    data.forEach((obj) => container.append(createCard(obj)));
+  const data = await getMenu();
+  localStorage.setItem("cards", JSON.stringify(data[0].pizzas));
+  data[0].pizzas.forEach((obj) => container.append(createCard(obj)));
 }
 
 function createCard(data) {
   const card = document.createElement("div");
   card.classList.add("card");
+  card.id = data.uid;
 
   card.append(createCardContainer(data));
   return card;
@@ -43,7 +45,7 @@ function createCardImage(url) {
   const container = document.createElement("div");
   container.classList.add("card__image");
   const image = document.createElement("img");
-  image.loading = 'eager'
+  image.loading = "eager";
   image.src = url;
   image.alt = url;
 
@@ -76,7 +78,9 @@ function createCardSize() {
   const container = document.createElement("select");
   container.classList.add("card__size");
   container.setAttribute("type", "text");
-  container.addEventListener('change', () => handleCurrencyChange(container));
+  container.addEventListener("change", (event) =>
+    handleCurrencyChange(event, container)
+  );
 
   options.forEach((el) => {
     const option = document.createElement("option");
@@ -84,12 +88,22 @@ function createCardSize() {
     container.append(option);
   });
 
+  container.value = "medium";
+
   return container;
 }
 
-function handleCurrencyChange(currencySelect) {
-    const selectedCurrency = currencySelect.value;
-      console.log(`Selected currency: ${selectedCurrency}`);
+function handleCurrencyChange(e, currencySelect) {
+  const selectedCurrency = currencySelect.value;
+  const id = e.target.parentNode.parentNode.parentNode.id;
+  const cardsFromStore = JSON.parse(localStorage.getItem("cards"));
+
+  cardsFromStore.forEach((elem) => {
+    if (+elem.uid === +id) {
+      const price = document.getElementById(id).querySelector(".card__price-value");
+      price.textContent = getFormatCurrency(elem.price[selectedCurrency]);
+    }
+  });
 }
 
 function createCardPrice(price) {
@@ -97,6 +111,7 @@ function createCardPrice(price) {
   container.classList.add("card__price");
   const text = document.createElement("span");
   text.textContent = getFormatCurrency(price);
+  text.classList.add("card__price-value");
 
   container.append(text);
   return container;

@@ -2,12 +2,34 @@
     position: relative;
 }
 
-.menu__wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 40px 0 90px 0;
-    gap: 50px 20px;
+.menu {
+    &__wrapper {
+        padding: 40px 0 90px 0;
+    }
+
+    &__cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 50px 20px;
+    }
+
+    &__categories-wrap {
+        padding-bottom: 100px;
+
+        ul {
+            display: flex;
+        }
+    }
+
+    &__item {
+        padding: 0 10px;
+
+        &-btn {
+            font-size: 18px;
+            color: #fff;
+            font-weight: 600;
+        }
+    }
 }
 
 .card {
@@ -69,5 +91,4 @@
 
 .card:nth-child(4n) {
     margin-right: auto;
-    /* Каждая четвертая карточка в ряду сдвигается влево */
 }
