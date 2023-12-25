@@ -1,0 +1,23 @@
+.cart {
+    &__container {
+        background-color: #ca1210;
+        border-radius: 5px;
+    }
+
+    &__button {
+        padding: 5px 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    &__image {
+        max-width: 25px;
+        margin-right: 10px;
+    }
+
+    &__cost {
+        span {
+            color: #fff;
+        }
+    }
+}
