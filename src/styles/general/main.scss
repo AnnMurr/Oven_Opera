@@ -21,7 +21,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     z-index: -1;
-    
+
     &_dough {
         background-image: url('https://i.imgur.com/pfPREyP.jpg') !important;
 
@@ -80,4 +80,51 @@ body {
             text-transform: uppercase;
         }
     }
+}
+
+
+.cross {
+    width: 15px;
+    height: 15px;
+    right: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &::after,
+    &::before {
+        content: "";
+        position: absolute;
+        background-color: #000000;
+        width: 20px;
+        height: 2px;
+        transition: all 0.5 ease;
+    }
+
+    &::before {
+        transform: rotate(45deg);
+    }
+
+    &::after {
+        transform: rotate(-45deg);
+    }
+
+    &:hover::after {
+        transform: rotate(45deg);
+    }
+
+    &:hover::before {
+        transform: rotate(-45deg);
+    }
+
+    // &_small {
+    //     width: 10px;
+    //     height: 10px;
+
+    //     &::after,
+    //     &::before {
+    //         width: 10px;
+    //     }
+    // }
 }

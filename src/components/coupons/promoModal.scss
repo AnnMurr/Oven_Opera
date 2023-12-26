@@ -1,0 +1,31 @@
+.promoModal {
+    position: fixed;
+    top: 40%;
+    z-index: 10;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    display: none;
+
+    &__container {
+        background-color: #fff;
+    }
+
+    &__wrapper {
+        padding: 20px;
+    }
+
+    &__close-btn {
+        width: fit-content;
+        margin-left: auto;
+    }
+
+    &__code {
+        padding: 40px;
+    }
+
+    &_show {
+        display: block;
+    }
+}
+

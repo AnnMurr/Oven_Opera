@@ -32,7 +32,7 @@ module.exports = {
   entry: {
     main: "./src/index.js",
     styles: "./src/styles/index.scss",
-    // registrations: "./src/components/registration/registration.js",
+    coupons: "./src/components/coupons/coupons.js",
     // showPassword: "./src/utils/showPassword/showPassword.js",
     // login: "./src/components/login/login.js",
   },
@@ -85,7 +85,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/pages/coupons.html",
       filename: "coupons.html",
-      chunks: ["styles"],
+      chunks: ["styles", "coupons"],
     }),
     new HtmlWebpackPlugin({
       template: "./src/pages/menu.html",
