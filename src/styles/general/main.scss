@@ -66,6 +66,10 @@ body {
     color: #fff;
     background-color: #9f2e2d;
 
+    &_red {
+        background-color: #ca1210;
+    }
+
     &_big {
         width: 100%;
     }
@@ -77,11 +81,13 @@ body {
             display: inline-block;
             color: #fff;
             margin-top: 30px;
-            text-transform: uppercase;
+            // text-transform: uppercase;
+            font-size: 18px;
+            width: 100%;
+            max-width: 40%;
         }
     }
 }
-
 
 .cross {
     width: 15px;
@@ -117,14 +123,4 @@ body {
     &:hover::before {
         transform: rotate(-45deg);
     }
-
-    // &_small {
-    //     width: 10px;
-    //     height: 10px;
-
-    //     &::after,
-    //     &::before {
-    //         width: 10px;
-    //     }
-    // }
 }

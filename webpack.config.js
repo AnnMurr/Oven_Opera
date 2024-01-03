@@ -27,6 +27,10 @@ app.get("/order", (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "order.html"));
 });
 
+app.get("/checkout", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "checkout.html"));
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
@@ -101,6 +105,11 @@ module.exports = {
       template: "./src/pages/order.html",
       filename: "order.html",
       chunks: ["order", "styles"],
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/pages/checkout.html",
+      filename: "checkout.html",
+      chunks: ["styles"],
     }),
     new MiniCssExtractPlugin({ filename: "styles.css" }),
   ],
