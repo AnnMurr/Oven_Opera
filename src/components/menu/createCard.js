@@ -1,5 +1,6 @@
 import { getFormatCurrency } from "../../core/utils/formatCurrency.js";
 import { handleCurrencyChange } from "./card.js";
+import { addToCart } from "../cart/cart.js";
 
 export function createCard(data) {
   const card = document.createElement("div");
@@ -101,6 +102,7 @@ function createCardButton() {
   btn.classList.add("btn", "btn_big");
   btn.type = "button";
   btn.textContent = "add to cart";
+  btn.addEventListener("click", addToCart)
 
   container.append(btn);
   return container;

@@ -23,6 +23,10 @@ app.get("/menu", (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "menu.html"));
 });
 
+app.get("/order", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "order.html"));
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
@@ -33,6 +37,7 @@ module.exports = {
     main: "./src/index.js",
     styles: "./src/styles/index.scss",
     coupons: "./src/components/coupons/coupons.js",
+    order: "./src/components/cart/createCartOrder.js",
     // showPassword: "./src/utils/showPassword/showPassword.js",
     // login: "./src/components/login/login.js",
   },
@@ -91,6 +96,11 @@ module.exports = {
       template: "./src/pages/menu.html",
       filename: "menu.html",
       chunks: ["main", "styles"],
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/pages/order.html",
+      filename: "order.html",
+      chunks: ["order", "styles"],
     }),
     new MiniCssExtractPlugin({ filename: "styles.css" }),
   ],

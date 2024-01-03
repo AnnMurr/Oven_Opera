@@ -1,0 +1,23 @@
+.body-order {
+    position: relative;
+}
+
+.order {
+    &__wrapper {
+        margin: 40px 0 90px 0;
+        background-color: #fff;
+        border-radius: 10px;
+    }
+
+    &__inner {
+        padding: 50px;
+    }
+
+    &__title {
+        padding-bottom: 40px;
+
+        h3 {
+            font-size: 30px;
+        }
+    }
+}
