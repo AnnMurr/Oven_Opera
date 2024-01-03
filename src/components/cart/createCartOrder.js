@@ -1,5 +1,5 @@
 import { getFormatCurrency } from "../../core/utils/formatCurrency.js";
-import { changeCounter } from "./cart.js"
+import { changeCounter } from "./cart.js";
 
 const orderContainer = document.querySelector(".order__inner");
 

@@ -38,7 +38,7 @@ module.exports = {
     styles: "./src/styles/index.scss",
     coupons: "./src/components/coupons/coupons.js",
     order: "./src/components/cart/createCartOrder.js",
-    // showPassword: "./src/utils/showPassword/showPassword.js",
+    basket: "./src/components/basket/basket.js",
     // login: "./src/components/login/login.js",
   },
   output: {
@@ -80,22 +80,22 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./index.html",
       filename: "index.html",
-      chunks: [ "styles"],
+      chunks: [ "styles", "basket"],
     }),
     new HtmlWebpackPlugin({
       template: "./src/pages/contacts.html",
       filename: "contacts.html",
-      chunks: ["styles"],
+      chunks: ["styles", "basket"],
     }),
     new HtmlWebpackPlugin({
       template: "./src/pages/coupons.html",
       filename: "coupons.html",
-      chunks: ["styles", "coupons"],
+      chunks: ["styles", "coupons", "basket"],
     }),
     new HtmlWebpackPlugin({
       template: "./src/pages/menu.html",
       filename: "menu.html",
-      chunks: ["main", "styles"],
+      chunks: ["main", "styles", "basket"],
     }),
     new HtmlWebpackPlugin({
       template: "./src/pages/order.html",

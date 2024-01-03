@@ -5,12 +5,14 @@
 .order {
     &__wrapper {
         margin: 40px 0 90px 0;
-        background-color: #fff;
-        border-radius: 10px;
+        
     }
 
     &__inner {
         padding: 50px;
+        background-color: #fff;
+        border-radius: 10px;
+        margin-bottom: 60px;
     }
 
     &__title {
@@ -19,5 +21,35 @@
         h3 {
             font-size: 30px;
         }
+    }
+
+    &__checkout {
+        padding: 50px;
+        background-color: #fff;
+        border-radius: 10px;
+        text-align: center;
+
+        &_hide {
+            display: none;
+        }
+    }
+
+    &__list-total {
+        padding: 40px 0;
+        display: flex;
+        justify-content: space-between;
+
+        &-price span {
+            font-size: 20px;
+            font-weight: 700;
+        }
+    }
+
+    &__proviso span > span {
+        font-weight: 700;
+    }
+
+    &__list-total-title h3 {
+        font-size: 25px;
     }
 }

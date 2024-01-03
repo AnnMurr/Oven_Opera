@@ -1,6 +1,6 @@
 import { getFormatCurrency } from "../../core/utils/formatCurrency.js";
-
-const cart = document.querySelector(".cart");
+import { getCartCost } from "../basket/basket.js";
+import { toggleOrderCheckoutBlock } from "./order.js";
 
 function addToCart(event) {
   const e = event.target;
@@ -11,6 +11,7 @@ function addToCart(event) {
   card[0].size = size;
 
   addToStorage(card);
+  getCartCost()
 }
 
 function addToStorage(card) {
@@ -75,6 +76,7 @@ function changeCounter(e) {
       if (event.textContent === "-") {
         if (element.pieces === 1 || !element.pieces) {
           removeCart(dataFromStorrage, cartOrderProduct, index);
+          toggleOrderCheckoutBlock();
         } else {
           counterValue[0].textContent = +counterValue[0].textContent - 1;
           element.pieces -= 1;
@@ -84,7 +86,6 @@ function changeCounter(e) {
         !element.pieces && (element.pieces = 1);
         counterValue[0].textContent = +counterValue[0].textContent + 1;
         element.pieces += 1;
-        console.log(cartOrderProduct, element, index);
         countSum(cartOrderProduct, element, index);
       }
     }
@@ -92,6 +93,7 @@ function changeCounter(e) {
   });
 
   sessionStorage.setItem("cart", JSON.stringify(dataFromStorrage));
+  getCartCost()
 }
 
 function removeCart(dataFromStorrage, item, index) {
