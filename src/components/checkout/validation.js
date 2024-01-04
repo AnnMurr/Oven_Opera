@@ -1,9 +1,19 @@
 import { checkPromoCode } from "./promoCode.js";
+import { getCartCost } from "../../core/utils/totalPrice.js";
+
 
 export function submitForm() {
   const inputs = document.querySelectorAll(".checkout__input");
 
   inputs.forEach((input) => getValidation(input));
+  checkTotalPrice()
+}
+
+function checkTotalPrice() {
+    const totalPrice = getCartCost()
+    const checkoutSubscription = document.querySelector(".checkout__subscription-minOrder");
+
+    totalPrice < 12 && (checkoutSubscription.style.color = "red");
 }
 
 function getValidation(input) {
