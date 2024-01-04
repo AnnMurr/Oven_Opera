@@ -71,7 +71,7 @@
                                                 <label class="checkout__label" for="">Street</label>
                                                 <input class="checkout__input" type="text">
                                                 <label class="checkout__label" for="">House</label>
-                                                <input class="checkout__input" type="text">
+                                                <input maxlength="5" class="checkout__input" type="text">
                                                 <label class="checkout__label" for="">Apartment</label>
                                                 <input class="checkout__input" type="text">
                                                 <label class="checkout__label" for="">Floor</label>
@@ -90,7 +90,7 @@
                                 <div class="checkout__block-form-wrap">
                                     <form class="checkout__form checkout__form-details">
                                         <label class="checkout__label" for="">Phone</label>
-                                        <input class="checkout__input" type="tel" value="+1">
+                                        <input class="checkout__input" type="tel">
                                         <label class="checkout__label" for="">Email</label>
                                         <input class="checkout__input" type="email">
                                         <label class="checkout__label" for="">Comment</label>
@@ -120,12 +120,13 @@
                                 <div class="checkout__block-title">
                                     <h4>Your order:</h4>
                                 </div>
+                                <div class="checkout__order"></div>
                                 <div class="checkout__total">
                                     <div class="checkout__block-title">
                                         <h4>Total</h4>
                                     </div>
-                                    <div class="checkout__total-sum">
-                                        <span>$123</span>
+                                    <div class="checkout__total-sum-inner">
+                                        <span class="checkout__total-sum"></span>
                                     </div>
                                 </div>
                                 <div class="checkout__subscription">

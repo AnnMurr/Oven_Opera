@@ -1,5 +1,5 @@
 import { getFormatCurrency } from "../../core/utils/formatCurrency.js";
-import { getCartCost } from "../basket/basket.js";
+import { getCartCost } from "../../core/utils/totalPrice.js";
 import { toggleOrderCheckoutBlock } from "./order.js";
 
 function addToCart(event) {
@@ -11,7 +11,7 @@ function addToCart(event) {
   card[0].size = size;
 
   addToStorage(card);
-  getCartCost()
+  getCartCost();
 }
 
 function addToStorage(card) {
@@ -34,7 +34,11 @@ function addToStorage(card) {
       if (element.uid === card[0].uid && !card[0].size) {
         !element.pieces && (element.pieces = 1);
         element.pieces += 1;
-      } else if (element.uid === card[0].uid && card[0].size && element.size === card[0].size) {
+      } else if (
+        element.uid === card[0].uid &&
+        card[0].size &&
+        element.size === card[0].size
+      ) {
         !element.pieces && (element.pieces = 1);
         element.pieces += 1;
       }
@@ -93,7 +97,7 @@ function changeCounter(e) {
   });
 
   sessionStorage.setItem("cart", JSON.stringify(dataFromStorrage));
-  getCartCost()
+  getCartCost();
 }
 
 function removeCart(dataFromStorrage, item, index) {
@@ -107,15 +111,8 @@ function countSum(cartOrderProduct, element) {
     cartOrderProduct.children[0].childNodes[2].childNodes[0].children[0];
 
   const size = element.size;
-  const pieces = element.pieces;
-
-  const price = element.size
-    ? pieces
-      ? element.price[size] * pieces
-      : element.price[size]
-    : pieces
-    ? element.price * pieces
-    : element.price;
+  const pieces = element.pieces || 1;
+  const price = size ? element.price[size] * pieces : element.price * pieces;
 
   cartOrderProductPrice.textContent = getFormatCurrency(price);
 }

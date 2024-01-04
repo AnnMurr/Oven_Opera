@@ -42,8 +42,8 @@ module.exports = {
     styles: "./src/styles/index.scss",
     coupons: "./src/components/coupons/coupons.js",
     order: "./src/components/cart/createCartOrder.js",
-    basket: "./src/components/basket/basket.js",
-    // login: "./src/components/login/login.js",
+    totalPrice: "./src/core/utils/totalPrice.js",
+    checkout: "./src/components/checkout/checkout.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -84,22 +84,22 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./index.html",
       filename: "index.html",
-      chunks: [ "styles", "basket"],
+      chunks: [ "styles", "totalPrice"],
     }),
     new HtmlWebpackPlugin({
       template: "./src/pages/contacts.html",
       filename: "contacts.html",
-      chunks: ["styles", "basket"],
+      chunks: ["styles", "totalPrice"],
     }),
     new HtmlWebpackPlugin({
       template: "./src/pages/coupons.html",
       filename: "coupons.html",
-      chunks: ["styles", "coupons", "basket"],
+      chunks: ["styles", "coupons", "totalPrice"],
     }),
     new HtmlWebpackPlugin({
       template: "./src/pages/menu.html",
       filename: "menu.html",
-      chunks: ["main", "styles", "basket"],
+      chunks: ["main", "styles", "totalPrice"],
     }),
     new HtmlWebpackPlugin({
       template: "./src/pages/order.html",
@@ -109,7 +109,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/pages/checkout.html",
       filename: "checkout.html",
-      chunks: ["styles"],
+      chunks: ["styles", "checkout"],
     }),
     new MiniCssExtractPlugin({ filename: "styles.css" }),
   ],

@@ -1,7 +1,8 @@
-import { getFormatCurrency } from "../../core/utils/formatCurrency.js";
+import { getFormatCurrency } from "./formatCurrency.js";
 
 const cartCost = document.querySelector(".cart__cost-sum");
 const orderListTotalSum = document.querySelector(".order__list-total-sum");
+const checkoutTotalSum = document.querySelector(".checkout__total-sum");
 
 export function getCartCost() {
   let cartFromStorage = JSON.parse(sessionStorage.getItem("cart")) || [];
@@ -13,6 +14,8 @@ export function getCartCost() {
 
   cartCost
     ? (cartCost.textContent = getFormatCurrency(cost))
+    : checkoutTotalSum
+    ? (checkoutTotalSum.textContent = getFormatCurrency(cost))
     : (orderListTotalSum.textContent = getFormatCurrency(cost));
 }
 

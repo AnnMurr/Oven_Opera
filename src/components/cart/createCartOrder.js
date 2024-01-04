@@ -89,15 +89,11 @@ function createCartOrderProductPrice(data) {
   const container = document.createElement("div");
   container.classList.add("cartOrderProduct__price");
   const text = document.createElement("span");
-  const pieces = data.pieces;
+  
   const size = data.size;
-  const price = data.size
-    ? pieces
-      ? data.price[size] * pieces
-      : data.price[size]
-    : pieces
-    ? data.price * pieces
-    : data.price;
+  const pieces = data.pieces || 1;
+  const price = size ? data.price[size] * pieces : data.price * pieces;
+
   text.textContent = getFormatCurrency(price);
 
   container.append(text);

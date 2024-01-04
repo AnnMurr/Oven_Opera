@@ -74,6 +74,13 @@
         }
     }
 
+    &__input {
+        &_error {
+            border-bottom: 1px solid #ca1210;
+            color: #ca1210;
+        }
+    }
+
     &__subscription {
         width: fit-content;
         margin: 0 auto;
@@ -83,7 +90,7 @@
             font-size: 16px;
             padding-top: 5px;
 
-            & > span {
+            &>span {
                 font-weight: 700;
             }
         }
@@ -95,13 +102,42 @@
         align-items: center;
         padding: 20px 0;
 
-        &-sum span {
+        &-sum {
             font-weight: 700;
             font-size: 20px;
         }
 
         .checkout__block-title {
             padding: 0;
+        }
+    }
+
+    &__order {
+        &-card {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            padding: 15px 0 5px 0;
+            border-bottom: 1px solid #8080804a;
+        }
+
+        &-counter {
+            text-align: center;
+
+            span {
+                font-size: 14px;
+            }
+        }
+
+        &-price {
+            text-align: end;
+
+            span {
+                font-weight: 600;
+            }
+        }
+
+        &-name h5 {
+            font-weight: 500;
         }
     }
 }
