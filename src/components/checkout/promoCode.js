@@ -12,7 +12,9 @@ export function checkPromoCode(event) {
     checkMondayPromo();
   } else if (value && value === "THIRD") {
     checkThirdPromo();
-  } else {
+  } else if (value && value === "MOST") {
+    checkMostPromo();
+  }  else {
     getCartCost();
     discountPrice.textContent = null;
   }
@@ -47,6 +49,28 @@ function checkThirdPromo() {
 
   countThirdPromo(countPizzas);
 }
+
+function checkMostPromo() {
+  const ordersFromStorage = JSON.parse(sessionStorage.getItem("cart"));
+  const countPizzas = getCountPizzas(ordersFromStorage);
+
+  countMostPromo(countPizzas);
+}
+
+function countMostPromo(countPizzas) {
+    const totalSum = document.querySelector(".checkout__total-sum");
+  
+    if (countPizzas.length >= 5) {
+      const discountPercentage = 20;
+      const discount = originalTotalSum * (discountPercentage / 100);
+      const discountSum = originalTotalSum - discount;
+  
+      if (discountSum + discount === originalTotalSum) {
+        totalSum.textContent = getFormatCurrency(originalTotalSum - discount);
+        discountPrice.textContent = getFormatCurrency(originalTotalSum);
+      }
+    }
+  }
 
 function countThirdPromo(countPizzas) {
   const totalSum = document.querySelector(".checkout__total-sum");
