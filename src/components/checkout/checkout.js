@@ -6,6 +6,5 @@ const submitBtn = document.querySelector(".checkout__button .btn");
 
 submitBtn.addEventListener("click", submitForm);
 
-
 getFinalOrder()
 getCartCost() 
