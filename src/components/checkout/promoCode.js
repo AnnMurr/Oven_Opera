@@ -2,14 +2,16 @@ import { getFormatCurrency } from "../../core/utils/formatCurrency.js";
 import { getCartCost } from "../../core/utils/totalPrice.js";
 
 const originalTotalSum = getCartCost();
-// const discountPrice = document.querySelector(".checkout__discount-price");
+const discountPrice = document.querySelector(".checkout__discount-price");
 
 export function checkPromoCode(event) {
   const value = event.target.value;
+  
   if (value && value === "MONDAY") {
     checkMondayPromo();
   } else {
     getCartCost();
+    discountPrice.textContent = null;
   }
 }
 
@@ -62,7 +64,7 @@ function countMondayPromo(countPizzas) {
 
     if (discount + smallestPrice === +originalTotalSum) {
       totalSum.textContent = getFormatCurrency(discount);
-      // discountPrice.textContent = getFormatCurrency(originalTotalSum)
+      discountPrice.textContent = getFormatCurrency(originalTotalSum)
     }
   }
 }

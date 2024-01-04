@@ -96,6 +96,10 @@
         }
     }
 
+    &__discount-price {
+        text-decoration: line-through;
+    }
+
     &__total {
         display: flex;
         justify-content: space-between;
