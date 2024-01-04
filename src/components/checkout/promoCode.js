@@ -1,17 +1,65 @@
 import { getFormatCurrency } from "../../core/utils/formatCurrency.js";
 import { getCartCost } from "../../core/utils/totalPrice.js";
+import { formatSum } from "../../core/utils/formatSum.js";
 
 const originalTotalSum = getCartCost();
 const discountPrice = document.querySelector(".checkout__discount-price");
 
 export function checkPromoCode(event) {
   const value = event.target.value;
-  
+
   if (value && value === "MONDAY") {
     checkMondayPromo();
+  } else if (value && value === "THIRD") {
+    checkThirdPromo();
   } else {
     getCartCost();
     discountPrice.textContent = null;
+  }
+}
+
+function getCountPizzas(ordersFromStorage) {
+  const countPizzas = [];
+
+  ordersFromStorage.forEach((data) => {
+    const pizza = {
+      title: data.title,
+      price: data.price[data.size],
+    };
+
+    if (data.type === "pizza") {
+      countPizzas.push(pizza);
+
+      if (data.pieces) {
+        for (let i = 1; i < data.pieces; i++) {
+          countPizzas.push(pizza);
+        }
+      }
+    }
+  });
+
+  return countPizzas;
+}
+
+function checkThirdPromo() {
+  const ordersFromStorage = JSON.parse(sessionStorage.getItem("cart"));
+  const countPizzas = getCountPizzas(ordersFromStorage);
+
+  countThirdPromo(countPizzas);
+}
+
+function countThirdPromo(countPizzas) {
+  const totalSum = document.querySelector(".checkout__total-sum");
+
+  if (countPizzas.length >= 3) {
+    const discountPercentage = 10;
+    const discount = originalTotalSum * (discountPercentage / 100);
+    const discountSum = originalTotalSum - discount;
+
+    if (discountSum + discount === originalTotalSum) {
+      totalSum.textContent = getFormatCurrency(originalTotalSum - discount);
+      discountPrice.textContent = getFormatCurrency(originalTotalSum);
+    }
   }
 }
 
@@ -19,27 +67,9 @@ function checkMondayPromo() {
   const ordersFromStorage = JSON.parse(sessionStorage.getItem("cart"));
   const date = new Date();
   const today = date.toLocaleDateString("en-US", { weekday: "long" });
-  const countPizzas = [];
+  const countPizzas = getCountPizzas(ordersFromStorage);
 
-  if (today === "Thursday") {
-    ordersFromStorage.forEach((data) => {
-      const pizza = {
-        title: data.title,
-        price: data.price[data.size],
-      };
-
-      if (data.type === "pizza") {
-        countPizzas.push(pizza);
-
-        if (data.pieces) {
-          for (let i = 1; i < data.pieces; i++) {
-            countPizzas.push(pizza);
-          }
-        }
-      }
-    });
-    countMondayPromo(countPizzas);
-  }
+  today === "Thursday" && countMondayPromo(countPizzas);
 }
 
 function countMondayPromo(countPizzas) {
@@ -62,9 +92,9 @@ function countMondayPromo(countPizzas) {
   if (smallestPrice) {
     const discount = originalTotalSum - smallestPrice;
 
-    if (discount + smallestPrice === +originalTotalSum) {
+    if (discount + smallestPrice === originalTotalSum) {
       totalSum.textContent = getFormatCurrency(discount);
-      discountPrice.textContent = getFormatCurrency(originalTotalSum)
+      discountPrice.textContent = getFormatCurrency(originalTotalSum);
     }
   }
 }
