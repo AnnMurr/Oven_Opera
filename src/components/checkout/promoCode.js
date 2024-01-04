@@ -1,16 +1,15 @@
 import { getFormatCurrency } from "../../core/utils/formatCurrency.js";
+import { getCartCost } from "../../core/utils/totalPrice.js";
 
-const totalSum = document.querySelector(".checkout__total-sum");
-const originalTotalSum = +totalSum.textContent.slice(1,
-  +totalSum.textContent.length - 1);
+const originalTotalSum = getCartCost();
+// const discountPrice = document.querySelector(".checkout__discount-price");
 
 export function checkPromoCode(event) {
-  const totalSum = document.querySelector(".checkout__total-sum");
-  const value = event.target.value
+  const value = event.target.value;
   if (value && value === "MONDAY") {
     checkMondayPromo();
   } else {
-    totalSum.textContent = getFormatCurrency(originalTotalSum);
+    getCartCost();
   }
 }
 
@@ -42,6 +41,7 @@ function checkMondayPromo() {
 }
 
 function countMondayPromo(countPizzas) {
+  const totalSum = document.querySelector(".checkout__total-sum");
   let smallestPrice = null;
 
   if (countPizzas.length >= 2) {
@@ -60,8 +60,9 @@ function countMondayPromo(countPizzas) {
   if (smallestPrice) {
     const discount = originalTotalSum - smallestPrice;
 
-    if(discount + smallestPrice === +originalTotalSum) {
-        totalSum.textContent =  getFormatCurrency(discount);
+    if (discount + smallestPrice === +originalTotalSum) {
+      totalSum.textContent = getFormatCurrency(discount);
+      // discountPrice.textContent = getFormatCurrency(originalTotalSum)
     }
   }
 }

@@ -1,13 +1,5 @@
 import { checkPromoCode } from "./promoCode.js";
 
-function getcheckPromoCode() {
-  const inputs = document.querySelectorAll(".checkout__input");
-
-  inputs.forEach((input) =>
-    input.previousElementSibling.textContent === "Promo code" &&
-      input.addEventListener("input", checkPromoCode));
-}
-
 export function submitForm() {
   const inputs = document.querySelectorAll(".checkout__input");
 
@@ -32,6 +24,16 @@ function validateEmpty(input) {
   } else {
     input.classList.remove("checkout__input_error");
   }
+}
+
+export function getcheckPromoCode() {
+  const inputs = document.querySelectorAll(".checkout__input");
+
+  inputs.forEach(
+    (input) =>
+      input.previousElementSibling.textContent === "Promo code" &&
+      input.addEventListener("input", checkPromoCode)
+  );
 }
 
 getcheckPromoCode();

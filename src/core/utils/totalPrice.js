@@ -17,6 +17,8 @@ export function getCartCost() {
     : checkoutTotalSum
     ? (checkoutTotalSum.textContent = getFormatCurrency(cost))
     : (orderListTotalSum.textContent = getFormatCurrency(cost));
+
+    return cost
 }
 
 getCartCost();
