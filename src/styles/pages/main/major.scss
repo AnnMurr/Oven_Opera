@@ -5,6 +5,10 @@
     justify-content: center;
     padding-top: 8rem;
 
+    @media screen and (max-width: "1020px") {
+        padding-top: 3rem;
+    }
+
     &__heading {
         text-align: center;
 
@@ -13,12 +17,39 @@
             letter-spacing: 10px;
             font-size: 70px;
             color: #fff;
+
+            @media screen and (max-width: "640px") {
+                font-size: 50px;
+            }
+
+            @media screen and (max-width: "480px") {
+                font-size: 40px;
+                padding-bottom: 40px;
+            }
+
+            @media screen and (max-width: "420px") {
+                font-size: 30px;
+                padding-bottom: 20px;
+            }
         }
 
         h2 {
             font-size: 60px;
             color: #fff;
             letter-spacing: 1rem;
+
+            @media screen and (max-width: "640px") {
+                font-size: 40px;
+            }
+
+            @media screen and (max-width: "480px") {
+                font-size: 30px;
+            }
+
+            @media screen and (max-width: "420px") {
+                font-size: 20px;
+                letter-spacing: 0.5rem;
+            }
         }
     }
 }

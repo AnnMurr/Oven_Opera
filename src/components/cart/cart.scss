@@ -11,8 +11,12 @@
     }
 
     &__image {
-        max-width: 25px;
+        width: 25px;
         margin-right: 10px;
+
+        @media screen and (max-width: "520px") {
+            width: 20px;
+        }
     }
 
     &__cost {

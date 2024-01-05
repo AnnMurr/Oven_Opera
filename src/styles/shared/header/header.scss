@@ -4,11 +4,33 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        @media screen and (max-width: "850px") {
+            padding: 80px 10px;
+        }
     }
 
     &__logo {
-        a img {
+        img {
             width: 100px;
+
+            @media screen and (max-width: "520px") {
+                width: 80px;
+            }
+        }
+    }
+
+    &__nav {
+        @media screen and (max-width: "850px") {
+            position: fixed;
+            top: 0;
+            background-color: black;
+            width: 100%;
+            left: 0;
+            padding: 20px 10px;
+            z-index: 20;
+            display: flex;
+            justify-content: center;
         }
     }
 
@@ -18,11 +40,19 @@
         li {
             padding: 0 30px;
 
+            @media screen and (max-width: "520px") {
+                padding: 0 10px;
+            }
+
             a {
                 color: #fff;
                 font-size: 20px;
                 transition: all 0.5s ease;
                 border-bottom: 1px solid transparent;
+
+                @media screen and (max-width: "520px") {
+                    font-size: 15px;
+                }
 
                 &:hover {
                     border-bottom: 1px solid #fff;

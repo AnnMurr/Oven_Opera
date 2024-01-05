@@ -22,6 +22,10 @@
             letter-spacing: 10px;
             font-size: 40px;
             color: #fff;
+
+            @media screen and (max-width: "520px") {
+                font-size: 30px;
+            }
         }
     }
 
@@ -31,6 +35,10 @@
             color: #fff;
             text-align: justify;
             line-height: 30px;
+
+            @media screen and (max-width: "520px") {
+                font-size: 14px;
+            }
         }
     }
 }

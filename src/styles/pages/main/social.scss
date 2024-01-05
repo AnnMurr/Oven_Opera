@@ -16,6 +16,10 @@
             letter-spacing: 10px;
             font-size: 40px;
             color: #fff;
+
+            @media screen and (max-width: "520px") {
+                font-size: 30px;
+            }
         }
     }
 
@@ -43,6 +47,10 @@
         align-items: center;
         justify-content: center;
         margin: 0 30px;
+
+        @media screen and (max-width: "420px") {
+            margin: 0 20px;
+        }
 
         a {
             transition: all 1s ease;

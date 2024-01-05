@@ -12,12 +12,27 @@
             letter-spacing: 10px;
             font-size: 40px;
             color: #ca1111;
+
+            @media screen and (max-width: "520px") {
+                font-size: 30px;
+            }
         }
     }
 
     &__days {
         display: flex;
         justify-content: space-between;
+
+        @media screen and (max-width: "640px") {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        @media screen and (max-width: "450px") {
+            gap: 20px;
+        }
+        
     }
 
     .workDay {
@@ -27,11 +42,19 @@
             h5 {
                 font-weight: 400;
                 font-size: 20px;
+
+                @media screen and (max-width: "450px") {
+                    font-size: 16px;
+                }
             }
         }
 
         &__time span {
             font-weight: 800;
+
+            @media screen and (max-width: "450px") {
+                font-size: 13px;
+            }
         }
     }
 }
