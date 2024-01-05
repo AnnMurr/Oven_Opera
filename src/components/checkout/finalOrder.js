@@ -1,4 +1,5 @@
 import { getItemFromSessionStorage } from "../../core/storage/sessionStorage.js";
+import { getFormatCurrency } from "../../core/utils/formatCurrency.js";
 
 const orderContainer = document.querySelector(".checkout__order");
 
@@ -57,9 +58,10 @@ function createOrderPrice(data) {
 
   const size = data.size;
   const pieces = data.pieces || 1;
-  const price = size ? data.price[size] * pieces : data.price * pieces;
+  const countPrice = size ? data.price[size] * pieces : data.price * pieces;
+  const price = Number(countPrice.toFixed(2));
 
-  text.textContent = price;
+  text.textContent = getFormatCurrency(price);
 
   container.append(text);
   return container;
