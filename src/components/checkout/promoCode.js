@@ -1,5 +1,6 @@
 import { getFormatCurrency } from "../../core/utils/formatCurrency.js";
 import { getCartCost } from "../../core/utils/totalPrice.js";
+import { getItemFromSessionStorage } from "../../core/storage/sessionStorage.js";
 import { formatSum } from "../../core/utils/formatSum.js";
 
 const originalTotalSum = getCartCost();
@@ -63,7 +64,7 @@ function getCountBeverages(ordersFromStorage) {
 }
 
 function checkThirdPromo() {
-  const ordersFromStorage = JSON.parse(sessionStorage.getItem("cart"));
+  const ordersFromStorage = getItemFromSessionStorage("cart");
   const countPizzas = getCountPizzas(ordersFromStorage);
 
   countThirdPromo(countPizzas);
@@ -85,7 +86,7 @@ function countThirdPromo(countPizzas) {
 }
 
 function checkMostPromo() {
-  const ordersFromStorage = JSON.parse(sessionStorage.getItem("cart"));
+  const ordersFromStorage = getItemFromSessionStorage("cart");
   const countPizzas = getCountPizzas(ordersFromStorage);
 
   countMostPromo(countPizzas);
@@ -107,12 +108,12 @@ function countMostPromo(countPizzas) {
 }
 
 function checkMondayPromo() {
-  const ordersFromStorage = JSON.parse(sessionStorage.getItem("cart"));
+  const ordersFromStorage = getItemFromSessionStorage("cart");
   const date = new Date();
   const today = date.toLocaleDateString("en-US", { weekday: "long" });
   const countPizzas = getCountPizzas(ordersFromStorage);
 
-  today === "Friday" && countMondayPromo(countPizzas);
+  today === "Monday" && countMondayPromo(countPizzas);
 }
 
 function countMondayPromo(countPizzas) {
@@ -146,7 +147,7 @@ function countMondayPromo(countPizzas) {
 }
 
 function checkBeveragePromo() {
-  const ordersFromStorage = JSON.parse(sessionStorage.getItem("cart"));
+  const ordersFromStorage = getItemFromSessionStorage("cart");
   const countPizzas = getCountPizzas(ordersFromStorage);
   const countBeverage = getCountBeverages(ordersFromStorage);
 

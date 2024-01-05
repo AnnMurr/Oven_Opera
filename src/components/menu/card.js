@@ -1,6 +1,7 @@
 import { getMenuData } from "../../api/getMenuData.js";
 import { createCard } from "./createCard.js";
 import { getFormatCurrency } from "../../core/utils/formatCurrency.js";
+import { setItemToLocalStorage, getItemFromLocalStorage } from "../../core/storage/localStorage.js";
 
 const container = document.querySelector(".menu__cards");
 const categoriesBtns = document.querySelectorAll(".menu__item-btn");
@@ -17,7 +18,7 @@ async function getCardsData(categoryName) {
   const data = dataFromApi[0][category];
   container.innerHTML = null;
   getNavLink(category);
-  localStorage.setItem("cards", JSON.stringify(data));
+  setItemToLocalStorage("cards", data);
   data.forEach((obj) => container.append(createCard(obj)));
 }
 
@@ -32,7 +33,7 @@ function getNavLink(category) {
 export function handleCurrencyChange(e, currencySelect) {
   const selectedCurrency = currencySelect.value;
   const id = e.target.parentNode.parentNode.parentNode.id;
-  const cardsFromStore = JSON.parse(localStorage.getItem("cards"));
+  const cardsFromStore = getItemFromLocalStorage("cards");
 
   cardsFromStore.forEach((elem) => {
     if (+elem.uid === +id) {

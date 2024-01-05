@@ -12,6 +12,7 @@ function submitForm() {
     const readyOrderTotalSum = document.querySelector(".readyOrder__total-sum");
     const checkoutTotalSum = document.querySelector(".checkout__total-sum");
     let isValid = false;
+    let isValidPrice = false;
     
     inputs.forEach((input) => getValidation(input));
   
@@ -19,9 +20,9 @@ function submitForm() {
       input.classList.contains("checkout__input_error"));
   
     errorInput === undefined ? (isValid = true) : (isValid = false);
-    isValid = checkTotalPrice();
+    isValidPrice = checkTotalPrice();
     
-    if(isValid) {
+    if(isValid && isValidPrice) {
         readyOrderModal.classList.add('readyOrder_active');
         readyOrderTotalSum.textContent = checkoutTotalSum.textContent;
         document.addEventListener("click", closeByClickOutSide);

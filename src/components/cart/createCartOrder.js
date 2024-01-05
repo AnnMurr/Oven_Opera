@@ -1,10 +1,11 @@
 import { getFormatCurrency } from "../../core/utils/formatCurrency.js";
+import { getItemFromSessionStorage } from "../../core/storage/sessionStorage.js";
 import { changeCounter } from "./cart.js";
 
 const orderContainer = document.querySelector(".order__inner");
 
 function getOrder() {
-  const products = JSON.parse(sessionStorage.getItem("cart"));
+  const products = getItemFromSessionStorage("cart");
 
   products.forEach((data) => {
     orderContainer.append(createCartOrderProduct(data));

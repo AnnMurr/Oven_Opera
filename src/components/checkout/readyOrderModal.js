@@ -1,3 +1,5 @@
+import { removeItemFromSessionStorage } from "../../core/storage/sessionStorage.js";
+
 const modal = document.querySelector(".readyOrder");
 const closeButton = document.querySelector(".readyOrder .cross");
 const body = document.querySelector(".body-checkout");
@@ -19,6 +21,6 @@ export function closeByClickOutSide(event) {
 }
 
 function resetForm() {
-    sessionStorage.removeItem("cart");
+    removeItemFromSessionStorage("cart");
     document.location.reload();
 }

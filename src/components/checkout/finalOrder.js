@@ -1,7 +1,9 @@
+import { getItemFromSessionStorage } from "../../core/storage/sessionStorage.js";
+
 const orderContainer = document.querySelector(".checkout__order");
 
 export function getFinalOrder() {
-  const ordersFromStorage = JSON.parse(sessionStorage.getItem("cart"));
+  const ordersFromStorage = getItemFromSessionStorage("cart");
 
   ordersFromStorage &&
     ordersFromStorage.forEach((data) =>

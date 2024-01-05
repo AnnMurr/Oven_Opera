@@ -1,0 +1,34 @@
+.readyOrder {
+    position: fixed;
+    z-index: 10;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    display: none;
+
+    &_active {
+        display: block;
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__container {
+        background-color: #e9e9e9;
+    }
+
+    &__wrapper {
+        padding: 20px;
+    }
+
+    &__title {
+        padding: 10px 0;
+    }
+
+    &__total-sum {
+        font-weight: 700;
+    }
+}

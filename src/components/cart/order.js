@@ -1,6 +1,8 @@
+import { getItemFromSessionStorage } from "../../core/storage/sessionStorage.js";
+
 export function toggleOrderCheckoutBlock() {
   const orderCheckout = document.querySelector(".order__checkout");
-  const cartFromStorage = JSON.parse(sessionStorage.getItem("cart")) || [];
+  const cartFromStorage = getItemFromSessionStorage("cart") || [];
 
   if (orderCheckout && cartFromStorage.length === 0) {
     orderCheckout.classList.add("order__checkout_hide");

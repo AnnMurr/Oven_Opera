@@ -1,4 +1,5 @@
 import { getFormatCurrency } from "../../core/utils/formatCurrency.js";
+import { setItemToSessionStorage, getItemFromSessionStorage } from "../../core/storage/sessionStorage.js";
 
 const constructorAddBtn = document.querySelectorAll(".constructor__add-btn");
 const constructorDeleteBtn = document.querySelectorAll(
@@ -28,7 +29,7 @@ const sizePrice = {
 };
 
 function addToCart() {
-  let cart = JSON.parse(sessionStorage.getItem("cart"));
+  let cart = getItemFromSessionStorage("cart");
   const ingredients = document.querySelectorAll(".card__name");
   const totalPriceItem = document.querySelector(".constructor__total-price");
   const totalPrice = totalPriceItem.textContent.slice(
@@ -51,15 +52,13 @@ function addToCart() {
   };
 
   for (let i = 1; i < ingredients.length; i++) {
-    console.log(ingredients[i].children[0].textContent);
     if (ingredients[i] !== undefined && ingredients[i] !== null) {
       pizza.ingredients.push(ingredients[i].children[0].textContent);
     }
   }
 
   cart.push(pizza);
-  const cartUpdated = JSON.stringify(cart);
-  sessionStorage.setItem("cart", cartUpdated);
+  setItemToSessionStorage("cart", cart);
 }
 
 function getPrice() {

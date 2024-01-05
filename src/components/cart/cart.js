@@ -1,12 +1,14 @@
 import { getFormatCurrency } from "../../core/utils/formatCurrency.js";
 import { getCartCost } from "../../core/utils/totalPrice.js";
 import { toggleOrderCheckoutBlock } from "./order.js";
+import { setItemToSessionStorage, getItemFromSessionStorage } from "../../core/storage/sessionStorage.js";
+import { getItemFromLocalStorage } from "../../core/storage/localStorage.js";
 
 function addToCart(event) {
   const e = event.target;
   const id = e.parentNode.parentNode.parentNode.parentNode.id;
   const size = e.parentNode.previousElementSibling.previousElementSibling.value;
-  const array = JSON.parse(localStorage.getItem("cards"));
+  const array = getItemFromLocalStorage("cards");
   const card = array.filter((el) => el.uid === +id);
   card[0].size = size;
 
@@ -15,7 +17,7 @@ function addToCart(event) {
 }
 
 function addToStorage(card) {
-  let cartFromStorage = JSON.parse(sessionStorage.getItem("cart")) || [];
+  let cartFromStorage = getItemFromSessionStorage("cart") || [];
   let found = false;
 
   const existingElement = cartFromStorage.find((el) => {
@@ -52,7 +54,7 @@ function addToStorage(card) {
     cartFromStorage.push(card[0]);
   }
 
-  sessionStorage.setItem("cart", JSON.stringify(cartFromStorage));
+  setItemToSessionStorage("cart", cartFromStorage);
 }
 
 function changeCounter(e) {
@@ -67,7 +69,7 @@ function changeCounter(e) {
     event.textContent === "-"
       ? event.parentNode.nextElementSibling.children
       : event.parentNode.previousElementSibling.children;
-  const dataFromStorrage = JSON.parse(sessionStorage.getItem("cart"));
+  const dataFromStorrage = getItemFromSessionStorage("cart");
 
   dataFromStorrage.map((element, index) => {
     if (
@@ -96,14 +98,14 @@ function changeCounter(e) {
     return element;
   });
 
-  sessionStorage.setItem("cart", JSON.stringify(dataFromStorrage));
+  setItemToSessionStorage("cart", dataFromStorrage);
   getCartCost();
 }
 
 function removeCart(dataFromStorrage, item, index) {
   item.remove();
   dataFromStorrage.splice(index, 1);
-  sessionStorage.setItem("cart", JSON.stringify(dataFromStorrage));
+  setItemToSessionStorage("cart", dataFromStorrage);
 }
 
 function countSum(cartOrderProduct, element) {
