@@ -112,7 +112,7 @@ function checkMondayPromo() {
   const today = date.toLocaleDateString("en-US", { weekday: "long" });
   const countPizzas = getCountPizzas(ordersFromStorage);
 
-  today === "Thursday" && countMondayPromo(countPizzas);
+  today === "Friday" && countMondayPromo(countPizzas);
 }
 
 function countMondayPromo(countPizzas) {
@@ -146,27 +146,32 @@ function checkBeveragePromo() {
   const ordersFromStorage = JSON.parse(sessionStorage.getItem("cart"));
   const countPizzas = getCountPizzas(ordersFromStorage);
   const countBeverage = getCountBeverages(ordersFromStorage);
-  
+
   countBeveragePromo(countPizzas, countBeverage);
 }
 
 function countBeveragePromo(countPizzas, countBeverage) {
   const totalSum = document.querySelector(".checkout__total-sum");
   let smallestPrice = null;
+
   if (countPizzas.length >= 3) {
-    for (let index = 0; index < countBeverage.length - 1; index++) {
-      const currentPrice = countBeverage[index].price;
-      const nextPrice = countBeverage[index + 1].price;
+    if (countBeverage.length === 1) {
+      smallestPrice = countBeverage[0].price;
+    } else {
+      for (let index = 0; index < countBeverage.length - 1; index++) {
+        const currentPrice = countBeverage[index].price;
+        const nextPrice = countBeverage[index + 1].price;
 
-
-      if (currentPrice !== undefined && nextPrice !== undefined) {
-        if (currentPrice < nextPrice) {
-          smallestPrice = currentPrice;
+        if (currentPrice !== undefined && nextPrice !== undefined) {
+          if (currentPrice < nextPrice) {
+            smallestPrice = currentPrice;
+          } else if (currentPrice > nextPrice) {
+            smallestPrice = nextPrice;
+          }
         }
       }
     }
   }
-
 
   if (smallestPrice) {
     const discount = originalTotalSum - smallestPrice;
