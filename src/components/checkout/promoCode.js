@@ -125,8 +125,10 @@ function countMondayPromo(countPizzas) {
       const nextPrice = countPizzas[index + 1].price;
 
       if (currentPrice !== undefined && nextPrice !== undefined) {
-        if (currentPrice < nextPrice) {
-          smallestPrice = currentPrice;
+        if (smallestPrice === null || currentPrice <= nextPrice) {
+          smallestPrice = +currentPrice;
+        } else {
+          smallestPrice = +nextPrice;
         }
       }
     }
@@ -134,9 +136,10 @@ function countMondayPromo(countPizzas) {
 
   if (smallestPrice) {
     const discount = originalTotalSum - smallestPrice;
+    const roundedDiscount = Number(discount.toFixed(2));
 
-    if (discount + smallestPrice === originalTotalSum) {
-      totalSum.textContent = getFormatCurrency(discount);
+    if (roundedDiscount + smallestPrice === originalTotalSum) {
+      totalSum.textContent = getFormatCurrency(roundedDiscount);
       discountPrice.textContent = getFormatCurrency(originalTotalSum);
     }
   }

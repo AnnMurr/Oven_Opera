@@ -14,13 +14,13 @@ function submitForm() {
     let isValid = false;
     
     inputs.forEach((input) => getValidation(input));
-    checkTotalPrice();
   
     const errorInput = Array.from(inputs).find((input) =>
       input.classList.contains("checkout__input_error"));
   
     errorInput === undefined ? (isValid = true) : (isValid = false);
-  
+    isValid = checkTotalPrice();
+    
     if(isValid) {
         readyOrderModal.classList.add('readyOrder_active');
         readyOrderTotalSum.textContent = checkoutTotalSum.textContent;

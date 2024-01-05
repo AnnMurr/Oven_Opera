@@ -6,9 +6,16 @@ export function checkTotalPrice() {
   const checkoutTotalSum = document.querySelector(".checkout__total-sum");
   const checkoutSubscription = document.querySelector(
     ".checkout__subscription-minOrder");
+    const price = checkoutTotalSum.textContent.slice(1, checkoutTotalSum.textContent.length)
+    let isValid = true;
 
-  getFormatCurrency(checkoutTotalSum.textContent) < 12 &&
-    (checkoutSubscription.style.color = "red");
+  
+  if(price < 12)  {
+    checkoutSubscription.style.color = "red";
+    isValid = false;
+  }
+
+  return isValid;
 }
 
 export function getValidation(input) {
