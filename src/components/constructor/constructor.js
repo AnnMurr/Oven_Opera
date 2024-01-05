@@ -1,32 +1,23 @@
 import { getFormatCurrency } from "../../core/utils/formatCurrency.js";
 import { setItemToSessionStorage, getItemFromSessionStorage } from "../../core/storage/sessionStorage.js";
+import { SIZE_PRICE, INITIAL_PIZZA } from "../../consts/consts.js";
+import { createCard } from "./createCard.js";
 
 const constructorAddBtn = document.querySelectorAll(".constructor__add-btn");
-const constructorDeleteBtn = document.querySelectorAll(
-  ".constructor__delete-btn"
-);
-const totalPrice = document.querySelector("constructor__total-price");
+const constructorDeleteBtn = document.querySelectorAll(".constructor__delete-btn");
 const constructorCards = document.querySelector(".constructor__cards");
 const constructorSize = document.querySelector(".constructor__size");
 const btnAddToCard = document.querySelector(".constructor__button .btn");
 
 constructorAddBtn.forEach((btn) =>
-  btn.addEventListener("click", addIngredients)
-);
+  btn.addEventListener("click", addIngredients));
 
 constructorDeleteBtn.forEach((btn) =>
-  btn.addEventListener("click", removeIngredients)
-);
+  btn.addEventListener("click", removeIngredients));
 
 btnAddToCard.addEventListener("click", addToCart);
 
 constructorSize.addEventListener("change", changeSize);
-
-const sizePrice = {
-  small: "€6.79",
-  medium: "€7.89",
-  large: "€8.99",
-};
 
 function addToCart() {
   let cart = getItemFromSessionStorage("cart");
@@ -37,19 +28,13 @@ function addToCart() {
 
   !cart && (cart = []);
 
-  const pizza = {
-    image: "https://i.imgur.com/2GTTsIW.png",
-    ingredients: [],
-    price: {
-      large: totalPrice.toString(),
-      medium: totalPrice.toString(),
-      small: totalPrice.toString(),
-    },
-    size: ingredients[0].children[0].textContent,
-    title: "PIZZA CONSTRUCTOR",
-    type: "pizza",
-    uid: Math.random() * 10000,
-  };
+  const pizza = INITIAL_PIZZA;
+  pizza.price =  {
+    large: totalPrice.toString(),
+    medium: totalPrice.toString(),
+    small: totalPrice.toString(),
+  }
+  pizza.size = ingredients[0].children[0].textContent;
 
   for (let i = 1; i < ingredients.length; i++) {
     if (ingredients[i] !== undefined && ingredients[i] !== null) {
@@ -77,7 +62,7 @@ function getPrice() {
 function addSize() {
   const size = constructorSize.value;
 
-  constructorCards.append(createCard(size, sizePrice[size]));
+  constructorCards.append(createCard(size, SIZE_PRICE[size]));
 }
 
 function changeSize(event) {
@@ -87,7 +72,7 @@ function changeSize(event) {
   const size = event.target.value;
 
   cardSizeName.textContent = size;
-  cardSizePrice.textContent = sizePrice[size];
+  cardSizePrice.textContent = SIZE_PRICE[size];
   getPrice();
 }
 
@@ -117,43 +102,6 @@ function removeIngredients(event) {
   btn.parentNode.classList.remove("constructor__delete_active");
   addBtn.classList.add("constructor__add_active");
   getPrice();
-}
-
-function createCard(title, price) {
-  const card = document.createElement("li");
-  card.classList.add("card");
-
-  card.append(createCardWrapper(title, price));
-  return card;
-}
-
-function createCardWrapper(title, price) {
-  const wrapper = document.createElement("div");
-  wrapper.classList.add("card__wrapper");
-
-  wrapper.append(createCardName(title, price), createCardPrice(title, price));
-  return wrapper;
-}
-
-function createCardName(title) {
-  const container = document.createElement("div");
-  container.classList.add("card__name");
-  const name = document.createElement("span");
-  name.textContent = title;
-
-  container.append(name);
-  return container;
-}
-
-function createCardPrice(_, price) {
-  const container = document.createElement("div");
-  container.classList.add("card__price");
-  const priceText = document.createElement("span");
-  priceText.classList.add("card__price-text");
-  priceText.textContent = price;
-
-  container.append(priceText);
-  return container;
 }
 
 addSize();

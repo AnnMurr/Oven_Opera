@@ -4,10 +4,10 @@ import { toggleOrderCheckoutBlock } from "./order.js";
 import { setItemToSessionStorage, getItemFromSessionStorage } from "../../core/storage/sessionStorage.js";
 import { getItemFromLocalStorage } from "../../core/storage/localStorage.js";
 
-function addToCart(event) {
-  const e = event.target;
-  const id = e.parentNode.parentNode.parentNode.parentNode.id;
-  const size = e.parentNode.previousElementSibling.previousElementSibling.value;
+function addToCart(e) {
+  const event = e.target;
+  const id = event.parentNode.parentNode.parentNode.parentNode.id;
+  const size = event.parentNode.previousElementSibling.previousElementSibling.value;
   const array = getItemFromLocalStorage("cards");
   const card = array.filter((el) => el.uid === +id);
   card[0].size = size;
@@ -50,10 +50,8 @@ function addToStorage(card) {
     found = true;
   }
 
-  if (found) {
-    cartFromStorage.push(card[0]);
-  }
-
+  found && cartFromStorage.push(card[0]);
+  
   setItemToSessionStorage("cart", cartFromStorage);
 }
 

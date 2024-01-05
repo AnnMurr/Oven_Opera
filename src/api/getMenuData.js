@@ -1,5 +1,7 @@
+import { MENU_DATA_URL } from "../consts/consts.js";
+
 export async function getMenuData() {
-  return fetch("https://65294da655b137ddc83e91cc.mockapi.io/pizzas")
+  return fetch(MENU_DATA_URL)
     .then((responce) => responce.json())
     .then((data) => {
       return data;
@@ -8,4 +10,3 @@ export async function getMenuData() {
       throw error;
     });
 }
-

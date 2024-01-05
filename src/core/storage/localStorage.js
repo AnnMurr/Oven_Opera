@@ -1,7 +1,9 @@
-export function setItemToLocalStorage(name,data) {
+function setItemToLocalStorage(name,data) {
     localStorage.setItem(name, JSON.stringify(data));
  }
 
-export function getItemFromLocalStorage(name) {
+function getItemFromLocalStorage(name) {
    return JSON.parse(localStorage.getItem(name));
 }
+
+export { setItemToLocalStorage, getItemFromLocalStorage }

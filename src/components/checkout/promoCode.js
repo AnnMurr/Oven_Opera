@@ -1,7 +1,6 @@
 import { getFormatCurrency } from "../../core/utils/formatCurrency.js";
 import { getCartCost } from "../../core/utils/totalPrice.js";
 import { getItemFromSessionStorage } from "../../core/storage/sessionStorage.js";
-import { formatSum } from "../../core/utils/formatSum.js";
 
 const originalTotalSum = getCartCost();
 const discountPrice = document.querySelector(".checkout__discount-price");
@@ -55,9 +54,7 @@ function getCountBeverages(ordersFromStorage) {
       price: data.price,
     };
 
-    if (data.type === "drink") {
-      countBeverage.push(beverage);
-    }
+    data.type === "drink" && countBeverage.push(beverage)
   });
 
   return countBeverage;

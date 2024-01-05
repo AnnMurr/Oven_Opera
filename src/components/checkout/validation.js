@@ -1,15 +1,13 @@
 import { checkPromoCode } from "./promoCode.js";
-import { getFormatCurrency } from "../../core/utils/formatCurrency.js";
-import { getCartCost } from "../../core/utils/totalPrice.js";
 
-export function checkTotalPrice() {
+function checkTotalPrice() {
   const checkoutTotalSum = document.querySelector(".checkout__total-sum");
   const checkoutSubscription = document.querySelector(
     ".checkout__subscription-minOrder");
-    const price = checkoutTotalSum.textContent.slice(1, checkoutTotalSum.textContent.length)
-    let isValid = true;
+    const price = checkoutTotalSum.textContent.slice(
+        1, checkoutTotalSum.textContent.length);
+  let isValid = true;
 
-  
   if(price < 12)  {
     checkoutSubscription.style.color = "red";
     isValid = false;
@@ -20,7 +18,7 @@ export function checkTotalPrice() {
   return isValid;
 }
 
-export function getValidation(input) {
+function getValidation(input) {
   const label = input.previousElementSibling.textContent;
 
   switch (label) {
@@ -33,21 +31,20 @@ export function getValidation(input) {
 }
 
 function validateEmpty(input) {
-  if (input.value.length === 0) {
-    input.classList.add("checkout__input_error");
-  } else {
+  input.value.length === 0 ?
+    input.classList.add("checkout__input_error"):
     input.classList.remove("checkout__input_error");
-  }
 }
 
-export function getcheckPromoCode() {
+function getcheckPromoCode() {
   const inputs = document.querySelectorAll(".checkout__input");
 
   inputs.forEach(
     (input) =>
       input.previousElementSibling.textContent === "Promo code" &&
-      input.addEventListener("input", checkPromoCode)
-  );
+      input.addEventListener("input", checkPromoCode));
 }
 
 getcheckPromoCode();
+
+export { checkTotalPrice, getValidation, getcheckPromoCode }

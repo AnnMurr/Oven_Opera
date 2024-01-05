@@ -7,8 +7,7 @@ export function getFinalOrder() {
 
   ordersFromStorage &&
     ordersFromStorage.forEach((data) =>
-      orderContainer.append(createOrderWrapper(data))
-    );
+      orderContainer.append(createOrderWrapper(data)));
 }
 
 function createOrderWrapper(data) {

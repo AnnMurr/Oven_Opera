@@ -17,8 +17,10 @@ async function getCardsData(categoryName) {
   const category = firstObject && categoryName ? categoryName : "pizzas";
   const data = dataFromApi[0][category];
   container.innerHTML = null;
+
   getNavLink(category);
   setItemToLocalStorage("cards", data);
+
   data.forEach((obj) => container.append(createCard(obj)));
 }
 
@@ -26,8 +28,7 @@ function getNavLink(category) {
   categoriesBtns.forEach((btn) =>
     btn.innerText === category
       ? btn.classList.add("menu__item-btn_active")
-      : btn.classList.remove("menu__item-btn_active")
-  );
+      : btn.classList.remove("menu__item-btn_active"));
 }
 
 export function handleCurrencyChange(e, currencySelect) {

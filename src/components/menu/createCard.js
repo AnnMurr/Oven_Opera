@@ -67,9 +67,9 @@ function createCardSize() {
   const container = document.createElement("select");
   container.classList.add("card__size");
   container.setAttribute("type", "text");
+  
   container.addEventListener("change", (event) =>
-    handleCurrencyChange(event, container)
-  );
+    handleCurrencyChange(event, container));
 
   options.forEach((el) => {
     const option = document.createElement("option");
