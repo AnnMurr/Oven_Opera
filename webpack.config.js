@@ -44,6 +44,7 @@ module.exports = {
     order: "./src/components/cart/createCartOrder.js",
     totalPrice: "./src/core/utils/totalPrice.js",
     checkout: "./src/components/checkout/checkout.js",
+    readyOrderModal: "./src/components/checkout/readyOrderModal.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -109,7 +110,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/pages/checkout.html",
       filename: "checkout.html",
-      chunks: ["styles", "checkout"],
+      chunks: ["styles", "checkout", "readyOrderModal"],
     }),
     new MiniCssExtractPlugin({ filename: "styles.css" }),
   ],

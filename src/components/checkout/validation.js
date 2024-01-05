@@ -1,22 +1,17 @@
 import { checkPromoCode } from "./promoCode.js";
+import { getFormatCurrency } from "../../core/utils/formatCurrency.js";
 import { getCartCost } from "../../core/utils/totalPrice.js";
 
+export function checkTotalPrice() {
+  const checkoutTotalSum = document.querySelector(".checkout__total-sum");
+  const checkoutSubscription = document.querySelector(
+    ".checkout__subscription-minOrder");
 
-export function submitForm() {
-  const inputs = document.querySelectorAll(".checkout__input");
-
-  inputs.forEach((input) => getValidation(input));
-  checkTotalPrice()
+  getFormatCurrency(checkoutTotalSum.textContent) < 12 &&
+    (checkoutSubscription.style.color = "red");
 }
 
-function checkTotalPrice() {
-    const totalPrice = getCartCost()
-    const checkoutSubscription = document.querySelector(".checkout__subscription-minOrder");
-
-    totalPrice < 12 && (checkoutSubscription.style.color = "red");
-}
-
-function getValidation(input) {
+export function getValidation(input) {
   const label = input.previousElementSibling.textContent;
 
   switch (label) {
