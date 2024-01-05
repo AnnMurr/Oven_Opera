@@ -146,18 +146,18 @@ function checkBeveragePromo() {
   const ordersFromStorage = JSON.parse(sessionStorage.getItem("cart"));
   const countPizzas = getCountPizzas(ordersFromStorage);
   const countBeverage = getCountBeverages(ordersFromStorage);
-
+  
   countBeveragePromo(countPizzas, countBeverage);
 }
 
 function countBeveragePromo(countPizzas, countBeverage) {
   const totalSum = document.querySelector(".checkout__total-sum");
   let smallestPrice = null;
-
   if (countPizzas.length >= 3) {
     for (let index = 0; index < countBeverage.length - 1; index++) {
       const currentPrice = countBeverage[index].price;
       const nextPrice = countBeverage[index + 1].price;
+
 
       if (currentPrice !== undefined && nextPrice !== undefined) {
         if (currentPrice < nextPrice) {
@@ -166,6 +166,7 @@ function countBeveragePromo(countPizzas, countBeverage) {
       }
     }
   }
+
 
   if (smallestPrice) {
     const discount = originalTotalSum - smallestPrice;
