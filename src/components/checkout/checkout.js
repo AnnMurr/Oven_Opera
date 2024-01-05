@@ -6,8 +6,7 @@ const submitBtn = document.querySelector(".checkout__button .btn");
 const body = document.querySelector(".body-checkout");
 submitBtn.addEventListener("click", submitForm);
 
-function submitForm(event) {
-    event.preventDefault();
+function submitForm() {
     const inputs = document.querySelectorAll(".checkout__input");
     const readyOrderModal = document.querySelector(".readyOrder");
     const readyOrderTotalSum = document.querySelector(".readyOrder__total-sum");

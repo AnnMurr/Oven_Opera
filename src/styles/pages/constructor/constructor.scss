@@ -88,11 +88,38 @@
                 font-size: 22px;
             }
         }
+
+        &-inner {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+        }
+    }
+
+    &__cards,
+    &__total {
+        max-width: 40%;
+        width: 100%;
+
+        &-price {
+            color: #fff;
+            font-weight: 700;
+            padding-left: 10px;
+            font-size: 20px;
+            
+            &-wrap {
+                padding: 20px 0;
+            }
+
+            &-heading {
+                color: #fff;
+                font-size: 25px;
+            }
+        }
     }
 
     .card {
         border-bottom: 1px solid #ffffff96;
-        max-width: 40%;
 
         &__wrapper {
             padding: 30px 0;
