@@ -1,0 +1,68 @@
+.body-constructor {
+    position: relative;
+}
+
+.constructor {
+    &__wrapper {
+        padding: 40px 0 90px 0;
+    }
+
+    &__title {
+        h3 {
+            color: #fff;
+            font-size: 30px;
+        }
+    }
+
+    &__ingredients {
+        padding-top: 40px;
+        display: flex;
+
+        &-heading {
+            padding-bottom: 10px;
+
+            h5 {
+                color: #fff;
+                font-size: 25px;
+            }
+        }
+    }
+
+    &__item {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        color: #fff;
+        padding: 10px 0;
+
+        &-price {
+            padding: 0 20px;
+        }
+    }
+
+    &__size {
+        margin-top: 30px;
+        width: 30%;
+        background-color: transparent;
+        color: white;
+        padding: 5px;
+    }
+
+    &__add-btn {
+        button {
+            background-color: red;
+            width: 20px;
+            color: #fff;
+        }
+    }
+
+    &__content{
+        padding-top: 60px;
+        
+        &-title {
+            h3 {
+                color: #fff;
+                font-size: 22px;
+            }
+        }
+    }
+}
