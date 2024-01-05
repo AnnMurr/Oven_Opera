@@ -13,6 +13,8 @@ export function checkTotalPrice() {
   if(price < 12)  {
     checkoutSubscription.style.color = "red";
     isValid = false;
+  } else {
+    checkoutSubscription.style.color = "black";
   }
 
   return isValid;
