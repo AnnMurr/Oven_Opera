@@ -49,6 +49,7 @@ module.exports = {
     totalPrice: "./src/core/utils/totalPrice.js",
     checkout: "./src/components/checkout/checkout.js",
     readyOrderModal: "./src/components/checkout/readyOrderModal.js",
+    constructor: "./src/components/constructor/constructor.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -119,7 +120,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/pages/constructor.html",
       filename: "constructor.html",
-      chunks: ["styles"],
+      chunks: ["styles", "constructor"],
     }),
     new MiniCssExtractPlugin({ filename: "styles.css" }),
   ],
