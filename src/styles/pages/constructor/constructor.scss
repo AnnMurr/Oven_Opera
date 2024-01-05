@@ -16,12 +16,16 @@
 
     &__ingredients {
         padding-top: 40px;
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 90px;
 
         &-heading {
             padding-bottom: 10px;
+            width: fit-content;
 
             h5 {
+                border-bottom: 1px solid #ffffff96;
                 color: #fff;
                 font-size: 25px;
             }
@@ -48,6 +52,12 @@
     }
 
     &__add {
+        display: none;
+
+        &_active {
+            display: block;
+        }
+
         &-btn {
             background-color: red;
             width: 20px;
@@ -55,7 +65,21 @@
         }
     }
 
-    &__content{
+    &__delete {
+        display: none;
+
+        &_active {
+            display: block;
+        }
+
+        &-btn {
+            background-color: red;
+            width: 20px;
+            color: #fff;
+        }
+    }
+
+    &__content {
         padding-top: 60px;
 
         &-title {
@@ -88,6 +112,7 @@
         &__price {
             padding: 0;
             text-align: end;
+
             span {
                 color: #fff;
                 font-size: 16px;
