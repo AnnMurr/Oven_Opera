@@ -2,6 +2,7 @@ import { getFormatCurrency } from "../../core/utils/formatCurrency.js";
 import { setItemToSessionStorage, getItemFromSessionStorage } from "../../core/storage/sessionStorage.js";
 import { SIZE_PRICE, INITIAL_PIZZA } from "../../consts/consts.js";
 import { createCard } from "./createCard.js";
+import { getCartCost } from "../../core/utils/totalPrice.js";
 
 const constructorAddBtn = document.querySelectorAll(".constructor__add-btn");
 const constructorDeleteBtn = document.querySelectorAll(".constructor__delete-btn");
@@ -44,6 +45,7 @@ function addToCart() {
 
   cart.push(pizza);
   setItemToSessionStorage("cart", cart);
+  getCartCost();
 }
 
 function getPrice() {
