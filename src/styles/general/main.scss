@@ -66,6 +66,10 @@ body {
     color: #fff;
     background-color: #9f2e2d;
 
+    @media screen and (max-width: "1020px") {
+        width: 100%;
+    }
+
     &_red {
         background-color: #ca1210;
     }
@@ -86,7 +90,7 @@ body {
             max-width: 40%;
 
             @media screen and (max-width: "1020px") {
-                  max-width: 100%;  
+                max-width: 100%;
             }
         }
     }
