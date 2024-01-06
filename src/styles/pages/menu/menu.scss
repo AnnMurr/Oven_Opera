@@ -12,6 +12,19 @@
         flex-wrap: wrap;
         gap: 50px 20px;
         min-height: 80vh;
+
+        @media screen and (max-width: "1020px") {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media screen and (max-width: "740px") {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media screen and (max-width: "520px") {
+            grid-template-columns: repeat(1, 1fr);
+        }
     }
 
     &__categories-wrap {
@@ -19,11 +32,13 @@
 
         ul {
             display: flex;
+            flex-wrap: wrap;
         }
     }
 
     &__item {
         padding: 0 10px;
+        margin: 10px 0;
 
         &-btn {
             font-size: 18px;
