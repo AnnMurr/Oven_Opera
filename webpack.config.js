@@ -11,7 +11,7 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
-app.get("/contacts", (req, res) => {
+app.get("https://annmurr.github.io/Oven_Opera/dist/contacts", (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "contacts.html"));
 });
 
