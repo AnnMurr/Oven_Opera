@@ -19,10 +19,32 @@
         padding: 40px 0 90px 0;
         display: flex;
         gap: 20px;
+
+        @media screen and (max-width: "620px") {
+            flex-direction: column;
+            gap: 60px;
+            padding: 0 0 90px 0;
+        }
     }
 
     &__block {
         width: 100%;
+
+        &-title {
+            padding-top: 20px;
+    
+            @media screen and (max-width: "360px") {
+                padding-top: 30px;
+            }
+    
+            h4 {
+                font-size: 23px;
+    
+                @media screen and (max-width: "360px") {
+                    font-size: 20px;
+                }
+            }
+        }
     }
 
     &__title {
@@ -31,6 +53,10 @@
         h3 {
             font-size: 30px;
             color: #fff;
+
+            @media screen and (max-width: "360px") {
+                font-size: 25px;
+            }
         }
     }
 
@@ -40,14 +66,14 @@
 
         &-wrap {
             padding: 40px;
-        }
-    }
 
-    &__block-title {
-        padding-top: 20px;
+            @media screen and (max-width: "360px") {
+                padding: 30px;
+            }
 
-        h4 {
-            font-size: 23px;
+            @media screen and (max-width: "290px") {
+                padding: 20px;
+            }
         }
     }
 
