@@ -1,12 +1,12 @@
 @import './general/reset.scss';
-@import './pages/main/major.scss';
-@import './shared/header/header.scss';
 @import './general/main.scss';
+@import './general/fonts.scss';
+@import './shared/header/header.scss';
+@import './shared/footer/footer.scss';
+@import './pages/main/major.scss';
 @import './pages/main/about.scss';
 @import './pages/main/workTime.scss';
 @import './pages/main/social.scss';
-@import './shared/footer/footer.scss';
-@import './general/fonts.scss';
 @import './pages/contacts/contacts.scss';
 @import './pages/main/offers.scss';
 @import './pages/coupons/coupons.scss';
