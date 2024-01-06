@@ -57,6 +57,10 @@
 .card {
     flex: 0 1 calc(25% - 20px);
 
+    @media screen and (max-width: "520px") {
+        width: 100%;
+    }
+
     &__container {
         height: 100%;
     }
@@ -117,4 +121,8 @@
 
 .card:nth-child(4n) {
     margin-right: auto;
+
+    @media screen and (max-width: "520px") {
+        margin: 0;
+    }
 }

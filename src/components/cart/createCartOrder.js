@@ -39,6 +39,7 @@ function createCartOrderProductImage(url) {
   container.classList.add("cartOrderProduct__image");
   const image = document.createElement("img");
   image.src = url;
+  image.alt = "product"
 
   container.append(image);
   return container;

@@ -4,8 +4,10 @@ import { getItemFromSessionStorage } from "../../core/storage/sessionStorage.js"
 
 const originalTotalSum = getCartCost();
 const discountPrice = document.querySelector(".checkout__discount-price");
+const checkoutPromoError = document.querySelector(".checkout__promo-error");
 
 export function checkPromoCode(event) {
+  checkoutPromoError.textContent = null
   const value = event.target.value;
 
   if (value && value === "MONDAY") {
@@ -110,7 +112,11 @@ function checkMondayPromo() {
   const today = date.toLocaleDateString("en-US", { weekday: "long" });
   const countPizzas = getCountPizzas(ordersFromStorage);
 
-  today === "Monday" && countMondayPromo(countPizzas);
+  if(today === "Monday") {
+    countMondayPromo(countPizzas);
+  } else {
+    checkoutPromoError.textContent = "This promo code is not valid today";
+  }
 }
 
 function countMondayPromo(countPizzas) {

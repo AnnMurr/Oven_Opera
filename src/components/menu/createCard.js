@@ -37,6 +37,7 @@ function createCardImage(url) {
   image.loading = "eager";
   image.src = url;
   image.alt = url;
+  image.alt = "product"
 
   container.append(image);
   return container;
