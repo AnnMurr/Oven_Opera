@@ -32,14 +32,14 @@
 
         &-title {
             padding-top: 20px;
-    
+
             @media screen and (max-width: "360px") {
                 padding-top: 30px;
             }
-    
+
             h4 {
                 font-size: 23px;
-    
+
                 @media screen and (max-width: "360px") {
                     font-size: 20px;
                 }
@@ -182,5 +182,11 @@
         &-name h5 {
             font-weight: 500;
         }
+    }
+
+    &__promo-error {
+        display: block;
+        color: red;
+        font-size: 12px;
     }
 }
