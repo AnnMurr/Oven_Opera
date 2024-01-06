@@ -11,6 +11,10 @@
         h3 {
             color: #fff;
             font-size: 30px;
+
+            @media screen and (max-width: "360px") {
+                font-size: 25px;
+            }
         }
     }
 
@@ -19,6 +23,15 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 90px;
+
+        @media screen and (max-width: "560px") {
+            gap: 40px;
+        }
+
+        @media screen and (max-width: "440px") {
+            grid-template-columns: repeat(1, 1fr);
+            gap: 60px;
+        }
 
         &-heading {
             padding-bottom: 10px;
@@ -38,6 +51,10 @@
         color: #fff;
         padding: 10px 0;
 
+        @media screen and (max-width: "830px") {
+            grid-template-columns: 1fr fit-content(100%) fit-content(100%);
+        }
+
         &-price {
             padding: 0 20px;
         }
@@ -49,6 +66,14 @@
         background-color: transparent;
         color: white;
         padding: 5px;
+
+        @media screen and (max-width: "520px") {
+            width: 40%;
+        }
+
+        @media screen and (max-width: "370px") {
+            width: 100%;
+        }
     }
 
     &__add {
@@ -82,24 +107,39 @@
     &__content {
         padding-top: 60px;
 
-        &-title {
-            h3 {
-                color: #fff;
-                font-size: 22px;
+        &-wrapper {
+            display: flex;
+            justify-content: space-between;
+
+            @media screen and (max-width: "520px") {
+                flex-direction: column;
+                gap: 60px;
             }
         }
 
         &-inner {
-            display: flex;
-            justify-content: space-between;
-            gap: 40px;
+            width: 100%;
+        }
+
+        &-title {
+            h3 {
+                color: #fff;
+                font-size: 22px;
+
+                @media screen and (max-width: "620px") {
+                    font-size: 20px;
+                }
+            }
         }
     }
 
-    &__cards,
     &__total {
         max-width: 40%;
         width: 100%;
+
+        @media screen and (max-width: "520px") {
+            max-width: 100%;
+        }
 
         &-price {
             color: #fff;
@@ -107,14 +147,35 @@
             padding-left: 10px;
             font-size: 20px;
 
+            @media screen and (max-width: "620px") {
+                font-size: 16px;
+            }
+
             &-wrap {
-                padding: 20px 0;
+                padding-bottom: 20px;
             }
 
             &-heading {
                 color: #fff;
                 font-size: 25px;
+
+                @media screen and (max-width: "620px") {
+                    font-size: 20px;
+                }
             }
+        }
+    }
+
+    &__cards {
+        max-width: 50%;
+        width: 100%;
+
+        @media screen and (max-width: "740px") {
+            max-width: 70%;
+        }
+
+        @media screen and (max-width: "520px") {
+            max-width: 100%;
         }
     }
 
@@ -126,6 +187,10 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             text-align: start;
+
+            @media screen and (max-width: "620px") {
+                padding: 20px 0;
+            }
         }
 
         &__name {
@@ -133,6 +198,10 @@
                 color: #fff;
                 font-size: 20px;
                 font-weight: 400;
+
+                @media screen and (max-width: "620px") {
+                    font-size: 17px;
+                }
             }
         }
 
@@ -144,6 +213,10 @@
                 color: #fff;
                 font-size: 16px;
                 font-weight: 700;
+
+                @media screen and (max-width: "620px") {
+                    font-size: 14px;
+                }
             }
         }
     }
