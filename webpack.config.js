@@ -7,31 +7,31 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 app.use(express.static(path.join(__dirname, "dist")));
 
-app.get("/", (req, res) => {
+app.get("https://annmurr.github.io/Oven_Opera/dist/", (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
-app.get("/contacts", (req, res) => {
+app.get("https://annmurr.github.io/Oven_Opera/dist/contacts", (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "contacts.html"));
 });
 
-app.get("/coupons", (req, res) => {
+app.get("https://annmurr.github.io/Oven_Opera/dist/coupons", (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "coupons.html"));
 });
 
-app.get("/menu", (req, res) => {
+app.get("https://annmurr.github.io/Oven_Opera/dist/menu", (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "menu.html"));
 });
 
-app.get("/order", (req, res) => {
+app.get("https://annmurr.github.io/Oven_Opera/dist/order", (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "order.html"));
 });
 
-app.get("/checkout", (req, res) => {
+app.get("https://annmurr.github.io/Oven_Opera/dist/checkout", (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "checkout.html"));
 });
 
-app.get("/constructor", (req, res) => {
+app.get("https://annmurr.github.io/Oven_Opera/dist/constructor", (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "constructor.html"));
 });
 
