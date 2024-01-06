@@ -120,7 +120,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/pages/constructor.html",
       filename: "constructor.html",
-      chunks: ["styles", "constructor"],
+      chunks: ["styles", "constructor", "totalPrice"],
     }),
     new MiniCssExtractPlugin({ filename: "styles.css" }),
   ],
