@@ -7,6 +7,14 @@
     width: 50%;
     display: none;
 
+    @media screen and (max-width: "460px") {
+        width: 70%;
+    }
+
+    @media screen and (max-width: "370px") {
+        width: 90%;
+    }
+
     &_active {
         display: block;
     }

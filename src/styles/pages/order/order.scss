@@ -5,10 +5,6 @@
 .order {
     &__wrapper {
         margin: 40px 0 90px 0;
-
-        @media screen and (max-width: "490px") {
-            margin: 0 0 90px 0;
-        }
     }
 
     &__inner {
@@ -24,6 +20,10 @@
 
     &__title {
         padding-bottom: 40px;
+
+        @media screen and (max-width: "490px") {
+            padding-bottom: 10px;
+        }
 
         h3 {
             font-size: 30px;

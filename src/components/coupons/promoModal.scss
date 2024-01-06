@@ -7,16 +7,25 @@
     transform: translate(-50%,-50%);
     display: none;
 
+    @media screen and (max-width: "640px") {
+        width: 60%;
+    }
+
     &__container {
         background-color: #fff;
     }
 
     &__wrapper {
         padding: 20px;
+        text-align: center;
     }
 
     &__code {
         padding: 40px;
+
+        @media screen and (max-width: "640px") {
+            padding: 40px 0;
+        }
     }
 
     &_show {

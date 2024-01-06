@@ -8,6 +8,10 @@
         @media screen and (max-width: "850px") {
             padding: 80px 10px;
         }
+
+        @media screen and (max-width: "520px") {
+            padding: 80px 10px 40px 0;
+        }
     }
 
     &__logo {
