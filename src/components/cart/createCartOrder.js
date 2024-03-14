@@ -7,7 +7,7 @@ const orderContainer = document.querySelector(".order__inner");
 function getOrder() {
   const products = getItemFromSessionStorage("cart");
 
-  products.forEach((data) => {
+  products && products.forEach((data) => {
     orderContainer.append(createCartOrderProduct(data));
   });
 }
